@@ -1,0 +1,6 @@
+<div class="d-flex flex-column gap-2 p-2 classMates">
+  <div class="rounded-pill d-flex align-items-center p-2 bg-secondary classMate" *ngFor="let p of pupils">
+    <img src="assets/img/{{p.image}}" width="50" height="50" class="object-fit-contain rounded-circle bg-primary">
+    <h4 class="w-75 text-center">{{p.name}}</h4>
+  </div>
+</div>

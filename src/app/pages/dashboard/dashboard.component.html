@@ -1,0 +1,74 @@
+<div class="bg-dark background" style="min-height: 100vh; min-width: 100vw; background-image: url('assets/img/background.jpg')">
+  <div class="row g-0">
+    <div class="col border-end border-primary" style="min-height: 100vh;">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-8 d-flex align-items-center justify-content-center" style="min-height: 100vh">
+      <app-character></app-character>
+    </div>
+    <div class="col">
+      <app-right-sidebar></app-right-sidebar>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="storeModal" tabindex="-1">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Store</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex gap-2 flex-wrap">
+          <button class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#avatarModal">
+            Avatars
+          </button>
+        </div>
+        <hr>
+        <h4 class="text-danger">🔥Hottest items</h4>
+        <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded">
+          <app-store-item></app-store-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="avatarModal" tabindex="-1">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Avatars</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <button class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#storeModal">
+          <i class="fa-solid fa-chevron-left"></i> Back
+        </button>
+        <hr>
+        <h4 class="text-danger">Avatars</h4>
+        <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded">
+          <app-store-item></app-store-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="inventoryModal" tabindex="-1">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Inventory</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4 class="text-danger">Inventory</h4>
+        <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded">
+          <app-inventory-item></app-inventory-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
