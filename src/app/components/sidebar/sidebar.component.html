@@ -1,0 +1,22 @@
+<div class="d-flex flex-column m-2">
+  <div class="d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center">
+      <img src="assets/img/coin.gif" width="50" height="50">
+      <span class="text-white">50</span>
+    </div>
+    <a href="#" class="text-white" data-bs-toggle="modal" data-bs-target="#storeModal">Store</a>
+  </div>
+
+  <button class="btn btn-primary rounded-pill" (click)="openMenu()">
+    Welcome Yusuf Yildiz
+    <i class="fa-solid fa-chevron-down" *ngIf="!status"></i>
+    <i class="fa-solid fa-chevron-up" *ngIf="status"></i>
+  </button>
+  <div class="flex-column bg-primary p-2 rounded-4 gap-4 text-center mt-2" [ngClass]="status ? 'd-flex' : 'd-none'">
+    <a href="#" class="text-white" data-bs-toggle="modal" data-bs-target="#inventoryModal">Inventory</a>
+    <a href="#" class="text-white">Lock screen</a>
+    <a href="#" class="text-white">Settings</a>
+    <a href="#" class="text-white">Logout</a>
+  </div>
+</div>
+
