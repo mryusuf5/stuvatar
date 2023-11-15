@@ -1,12 +1,16 @@
-<div class="bg-dark background" style="min-height: 100vh; min-width: 100vw; background-image: url('assets/img/background.jpg')">
-  <div class="row g-0">
-    <div class="col border-end border-primary" style="min-height: 100vh;">
+<ngx-spinner type="ball-scale-multiple">
+  <div class="lds-dual-ring" style="transform: scale(5)"></div>
+</ngx-spinner>
+<div class="bg-dark background" style="min-height: 100vh; min-width: 100vw; ">
+  <div class="d-flex flex-column">
+    <div class="">
       <app-sidebar></app-sidebar>
     </div>
-    <div class="col-8 d-flex align-items-center justify-content-center" style="min-height: 100vh">
-      <app-character></app-character>
+    <div class="col-8 d-flex align-items-center justify-content-center w-100 p-5" style="height: 1600px">
+      <app-character (click)="test()"></app-character>
+      <app-chest></app-chest>
     </div>
-    <div class="col">
+    <div class="bottom-bar">
       <app-right-sidebar></app-right-sidebar>
     </div>
   </div>
@@ -16,19 +20,22 @@
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5">Store</h1>
+        <h1 class="modal-title fs-1">Store</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="d-flex gap-2 flex-wrap">
-          <button class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#avatarModal">
+          <button class="btn btn-primary rounded-pill" style="font-size: 2rem" data-bs-toggle="modal"
+                  data-bs-target="#avatarModal">
             Avatars
           </button>
         </div>
         <hr>
-        <h4 class="text-danger">🔥Hottest items</h4>
+        <h4 class="text-danger text-center" style="font-size: 4rem">🔥Hottest items🔥</h4>
         <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded">
-          <app-store-item></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
         </div>
       </div>
     </div>
@@ -39,17 +46,35 @@
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Avatars</h1>
+        <h1 class="modal-title fs-1">Avatars</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <button class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#storeModal">
+        <button class="btn btn-primary rounded-pill" style="font-size: 2rem" data-bs-toggle="modal"
+                data-bs-target="#storeModal">
           <i class="fa-solid fa-chevron-left"></i> Back
         </button>
         <hr>
-        <h4 class="text-danger">Avatars</h4>
+        <h4 class="text-danger text-center" style="font-size: 4rem">Avatars</h4>
         <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded">
-          <app-store-item></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
+          <app-store-item class="col-5"></app-store-item>
         </div>
       </div>
     </div>
@@ -60,13 +85,13 @@
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5">Inventory</h1>
+        <h1 class="modal-title fs-1">Inventory</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h4 class="text-danger">Inventory</h4>
+        <h4 class="text-danger text-center" style="font-size: 4rem">Inventory</h4>
         <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded">
-          <app-inventory-item></app-inventory-item>
+          <app-inventory-item class="col-5"></app-inventory-item>
         </div>
       </div>
     </div>

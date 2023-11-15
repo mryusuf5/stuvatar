@@ -1,0 +1,9 @@
+<div class="position-absolute chest" [ngClass]="openedChest ? 'd-block' : 'd-none'">
+  <img src="assets/img/background-rare.png" class="bg" id="background">
+  <div class="container d-flex flex-column gap-2 align-items-center justify-content-center main-container" style="height: 100vh">
+    <img src="assets/img/chest.png" id="chest" width="750" class="object-fit-cover" (click)="openChest()">
+    <!--        <button id="open" class="btn btn-danger rounded-pill w-25">Open!</button>-->
+    <span id="rarity" style="font-size: 8rem"></span>
+  </div>
+</div>
+
