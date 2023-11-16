@@ -1,0 +1,102 @@
+.background{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.open-chest{
+  animation: openchest 3s;
+}
+
+.rotate-bg{
+  animation: background 5s;
+
+}
+
+.main-container{
+  position: relative;
+  z-index: 999;
+}
+
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 0;
+  transform-origin: 50% 50%;
+  opacity: 0;
+}
+
+.zoom{
+  animation: zoom 1s;
+}
+
+@keyframes zoom {
+  0%{
+    transform: scale(.3);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+@keyframes background {
+  0% {
+    opacity: .8;
+    transform: rotate(0deg);
+    transform-origin: 50% 50%;
+  }
+  50% {
+    opacity: 1;
+    transform-origin: 50% 50%;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(720deg);
+    transform-origin: 50% 50%;
+  }
+}
+
+@keyframes openchest{
+  0%{
+    transform: rotate(0deg);
+  }
+  10%{
+    transform: rotate(20deg) scale(.9);
+  }
+  25%{
+    transform: rotate(-20deg) scale(.8);
+  }
+  35%{
+    transform: rotate(20deg) scale(.7);
+  }
+  50%{
+    transform: rotate(-20deg) scale(.6);
+  }
+  70%{
+    transform: rotate(20deg) scale(.5);
+  }
+  85%{
+    transform: rotate(-20deg) scale(.4);
+  }
+  100%{
+    transform: rotate(20deg) scale(.3);
+  }
+}
+
+.chest{
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: -50%;
+  width: 550vw;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust the alpha value to control the darkness */
+}
