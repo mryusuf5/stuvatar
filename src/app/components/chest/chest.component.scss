@@ -91,3 +91,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: -50%;
+  width: 550vw;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust the alpha value to control the darkness */
+}

@@ -8,7 +8,7 @@ const rarityArray = [
   "legendary"
 ];
 
-const rarityTier = Math.floor(Math.random() * rarityArray.length);
+const rarityTier = Math.floor(Math.random() * 100) + 1;
 
 @Component({
   selector: 'app-chest',
@@ -19,6 +19,7 @@ export class ChestComponent implements OnInit{
   public chest:HTMLImageElement = null;
   public background:HTMLImageElement = null;
   public openedChest: boolean = false;
+  public closeButton: boolean = false;
 
   constructor(private screenService: ScreenService) {
   }
@@ -35,23 +36,19 @@ export class ChestComponent implements OnInit{
 
   public openChest()
   {
-    console.log(this.openedChest)
+    this.closeButton = true;
     let index;
 
     if (rarityTier <= 50) {
       index = 0;
-
     } else if (rarityTier <= 85) {
       index = 1;
-
     } else if (rarityTier <= 95) {
       index = 2;
-
     } else {
       index = 3;
-
     }
-
+    console.log(rarityTier)
     this.background.src = "assets/img/background-" + rarityArray[index] + ".png";
 
 
@@ -62,5 +59,14 @@ export class ChestComponent implements OnInit{
       this.chest.src = "assets/img/knife.png"
       this.chest.classList.add("zoom")
     }, 3000)
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 5000)
+  }
+
+  public closeChest()
+  {
+    this.openedChest = false;
   }
 }
