@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit{
     this.spinner.show();
     setTimeout(() => {
       this.spinner.hide();
-    }, 1000)
+    }, 4000)
 
     this.querySubscription = this.apollo
       .watchQuery<any>({

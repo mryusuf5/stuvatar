@@ -56,7 +56,7 @@ export class ChestComponent implements OnInit{
     this.background.classList.add("rotate-bg")
 
     setTimeout(() => {
-      this.chest.src = "assets/img/knife.png"
+      this.chest.src = "assets/img/rose.png"
       this.chest.classList.add("zoom")
     }, 3000)
 

@@ -15,6 +15,7 @@ import { RightSidebarComponent } from './components/right-sidebar/right-sidebar.
 import { StoreItemComponent } from './components/store-item/store-item.component';
 import { InventoryItemComponent } from './components/inventory-item/inventory-item.component';
 import {ChestComponent} from "./components/chest/chest.component";
+import {IdleComponent} from "./pages/idle/idle.component";
 import { GraphQLModule } from './graphql.module';
 import {APOLLO_OPTIONS} from "apollo-angular";
 import {InMemoryCache} from "@apollo/client/core";
@@ -31,7 +32,8 @@ import {HttpLink} from "apollo-angular/http";
     RightSidebarComponent,
     StoreItemComponent,
     InventoryItemComponent,
-    ChestComponent
+    ChestComponent,
+    IdleComponent
   ],
   imports: [
     BrowserModule,
