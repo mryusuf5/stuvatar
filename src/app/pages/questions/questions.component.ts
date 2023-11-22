@@ -19,41 +19,42 @@ export class QuestionsComponent implements OnInit{
     this.correctAnswer = this.generateQuestion()
   }
 
-  public generateQuestion(): number
-  {
-    let answer1 = Math.floor(Math.random() * 100);
-    let answer2 = Math.floor(Math.random() * 100);
-    let answer3 = Math.floor(Math.random() * 100);
-    let answer4 = Math.floor(Math.random() * 100);
-    this.value1 = answer1;
-    this.value2 = answer2;
-    this.value3 = answer3;
-    this.value4 = answer4;
+  public generateQuestion(): number {
+    const generateRandomAnswer = () => Math.floor(Math.random() * 100);
 
-    let selectedAnswer = Math.floor(Math.random() * 4);
-    let correctanswer;
+    this.value1 = generateRandomAnswer();
+    this.value2 = generateRandomAnswer();
+    this.value3 = generateRandomAnswer();
+    this.value4 = generateRandomAnswer();
 
-    switch (selectedAnswer){
+    const selectedAnswer = Math.floor(Math.random() * 4);
+
+    const generateQuestionForAnswer = (answer: number): void => {
+      this.question1 = answer / 2;
+      this.question2 = answer / 2;
+    };
+
+    let correctanswer: number;
+
+    switch (selectedAnswer) {
       case 0:
-        this.question1 = this.value1 / 2;
-        this.question2 = this.value1 / 2;
+        generateQuestionForAnswer(this.value1);
         correctanswer = this.value1;
         break;
       case 1:
-        this.question1 = this.value2 / 2;
-        this.question2 = this.value2 / 2;
+        generateQuestionForAnswer(this.value2);
         correctanswer = this.value2;
         break;
       case 2:
-        this.question1 = this.value3 / 2;
-        this.question2 = this.value3 / 2;
+        generateQuestionForAnswer(this.value3);
         correctanswer = this.value3;
         break;
       case 3:
-        this.question1 = this.value4 / 2;
-        this.question2 = this.value4 / 2;
+        generateQuestionForAnswer(this.value4);
         correctanswer = this.value4;
         break;
+      default:
+        correctanswer = -1;
     }
 
     return correctanswer;
