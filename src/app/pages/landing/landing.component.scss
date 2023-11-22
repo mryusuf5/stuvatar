@@ -1,0 +1,15 @@
+.heroImage{
+
+}
+
+@media screen and (max-width: 1400px) {
+  .heroImage{
+    width: 550px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .heroImage{
+    width: 450px;
+  }
+}

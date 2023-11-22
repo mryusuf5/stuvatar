@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-store-item',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./store-item.component.scss']
 })
 export class StoreItemComponent {
-
+  @Input() characterImage: string;
 }
