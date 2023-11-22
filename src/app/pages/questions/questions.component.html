@@ -1,0 +1,33 @@
+<div class="container mt-5 fs-1">
+  <div class="d-flex flex-column align-items-center">
+    Wat is {{question1}} + {{question2}}?
+    <div class="d-flex flex-column gap-2">
+      <div class="form-check">
+        <input class="form-check-input" [(ngModel)]="selectedOption" type="radio" name="first" value="{{value1}}">
+        <label class="form-check-label">
+          {{value1}}
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" [(ngModel)]="selectedOption" type="radio" name="first" value="{{value2}}">
+        <label class="form-check-label">
+          {{value2}}
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" [(ngModel)]="selectedOption" type="radio" name="first" value="{{value3}}">
+        <label class="form-check-label">
+          {{value3}}
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" [(ngModel)]="selectedOption" type="radio" name="first" value="{{value4}}">
+        <label class="form-check-label">
+          {{value4}}
+        </label>
+      </div>
+      {{selectedOption}}
+      <button class="btn btn-primary rounded-pill" (click)="answer()">Antwoorden</button>
+    </div>
+  </div>
+</div>

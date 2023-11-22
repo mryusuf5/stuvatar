@@ -25,6 +25,7 @@ const query = gql`
 export class DashboardComponent implements OnInit{
 
   private querySubscription: Subscription;
+  public hasChest: boolean = false;
 
   constructor(private spinner: NgxSpinnerService,
               private gradesService: GradesService,
@@ -35,8 +36,13 @@ export class DashboardComponent implements OnInit{
     this.spinner.show();
     setTimeout(() => {
       this.spinner.hide();
-    }, 4000)
-
+      if(window.localStorage.getItem("giveChest"))
+      {
+        this.hasChest = true;
+        alert("Je hebt een kist gekregen!")
+        window.localStorage.removeItem("giveChest");
+      }
+    })
     this.querySubscription = this.apollo
       .watchQuery<any>({
         query: query,

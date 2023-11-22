@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { StoreItemComponent } from './components/store-item/store-item.component
 import { InventoryItemComponent } from './components/inventory-item/inventory-item.component';
 import {ChestComponent} from "./components/chest/chest.component";
 import {IdleComponent} from "./pages/idle/idle.component";
+import {QuestionsComponent} from "./pages/questions/questions.component";
 import { GraphQLModule } from './graphql.module';
 import {APOLLO_OPTIONS} from "apollo-angular";
 import {InMemoryCache} from "@apollo/client/core";
@@ -33,7 +35,8 @@ import {HttpLink} from "apollo-angular/http";
     StoreItemComponent,
     InventoryItemComponent,
     ChestComponent,
-    IdleComponent
+    IdleComponent,
+    QuestionsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import {HttpLink} from "apollo-angular/http";
     BrowserAnimationsModule,
     NgxSpinnerModule,
     HttpClientModule,
-    GraphQLModule
+    GraphQLModule,
+    FormsModule
   ],
   providers: [
     {

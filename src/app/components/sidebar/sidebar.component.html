@@ -10,16 +10,18 @@
     </a>
   </div>
 
-  <button class="btn btn-primary rounded-pill fs-1" (click)="openMenu()">
+  <button class="btn btn-primary rounded-pill" style="font-size: 4rem" (click)="openMenu()">
     Welcome Yusuf Yildiz
     <i class="fa-solid fa-chevron-down" *ngIf="!status"></i>
     <i class="fa-solid fa-chevron-up" *ngIf="status"></i>
   </button>
-  <div class="flex-column bg-primary p-2 rounded-4 gap-4 text-center mt-2 fs-1" [ngClass]="status ? 'd-flex' : 'd-none'">
-    <a href="#" class="text-white" data-bs-toggle="modal" data-bs-target="#inventoryModal">Inventory</a>
-    <a href="#" class="text-white">Lock screen</a>
-    <a href="#" class="text-white">Settings</a>
-    <a href="#" class="text-white">Logout</a>
+  <div class="flex-column bg-primary p-2 rounded-4 text-center mt-2" style="gap: 8em" [ngClass]="status ? 'd-flex' : 'd-none'">
+    <a href="#" class="text-white p-5" style="font-size: 4rem" data-bs-toggle="modal" data-bs-target="#inventoryModal">
+      Inventory
+    </a>
+    <a href="idle" class="text-white p-5" style="font-size: 4rem">Lock screen</a>
+    <a href="questions" class="text-white p-5" style="font-size: 4rem">Questions</a>
+    <a href="#" class="text-white p-5" style="font-size: 4rem">Settings</a>
+    <a href="#" class="text-white p-5" style="font-size: 4rem">Logout</a>
   </div>
 </div>
-
