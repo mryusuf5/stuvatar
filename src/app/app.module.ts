@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule, HttpHeaders} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
@@ -55,6 +55,7 @@ import {HttpLink} from "apollo-angular/http";
           cache: new InMemoryCache(),
           link: httpLink.create({
             uri: 'https://admin.stuvatar.nl/graphql',
+            headers: new HttpHeaders({"X-Api-Key":"JHdLtwpZpL18nR0PspSpHBipEvdP1mbgS6vEV0EHmNDSAYkhVe"})
           }),
         };
       },

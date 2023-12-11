@@ -2,14 +2,14 @@
 <div class="bg-dark background" style="min-height: 100vh; min-width: 100vw;">
   <div class="d-flex flex-column">
     <div class="">
-      <app-sidebar></app-sidebar>
+      <app-sidebar [Student]="student" ></app-sidebar>
     </div>
     <div class="col-8 d-flex align-items-center justify-content-center w-100 p-5" style="height: 1600px">
-      <app-character (click)="test()"></app-character>
+      <app-character></app-character>
       <app-chest></app-chest>
     </div>
     <div class="bottom-bar">
-      <app-right-sidebar></app-right-sidebar>
+      <app-right-sidebar [classMates]="classMates"></app-right-sidebar>
     </div>
   </div>
 </div>
@@ -23,9 +23,9 @@
       </div>
       <div class="modal-body">
         <div class="d-flex gap-2 flex-wrap">
-          <button class="btn btn-primary rounded-pill" style="font-size: 2rem" data-bs-toggle="modal"
-                  data-bs-target="#avatarModal">
-            Avatars
+          <button class="btn btn-primary rounded-pill" *ngFor="let category of categories" style="font-size: 2rem" data-bs-toggle="modal"
+                  [attr.data-bs-target]="'#storeModal' + category.name">
+            {{category.name}}
           </button>
         </div>
         <hr>
@@ -40,11 +40,11 @@
   </div>
 </div>
 
-<div class="modal fade" id="avatarModal" tabindex="-1">
+<div class="modal fade" [attr.id]="'storeModal' + category.name" *ngFor="let category of categories" tabindex="-1">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-1">Avatars</h1>
+        <h1 class="modal-title fs-1">Avatar</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -55,19 +55,7 @@
         <hr>
         <h4 class="text-danger text-center" style="font-size: 4rem">Avatars</h4>
         <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded">
-          <app-store-item [characterImage]="'1'" class="col-5"></app-store-item>
-          <app-store-item [characterImage]="'2'" class="col-5"></app-store-item>
-          <app-store-item [characterImage]="'3'" class="col-5"></app-store-item>
-          <app-store-item [characterImage]="'4'" class="col-5"></app-store-item>
-          <app-store-item [characterImage]="'5'" class="col-5"></app-store-item>
-          <app-store-item [characterImage]="'6'" class="col-5"></app-store-item>
-          <app-store-item [characterImage]="'7'" class="col-5"></app-store-item>
-          <app-store-item [characterImage]="'8'" class="col-5"></app-store-item>
-          <app-store-item [characterImage]="'9'" class="col-5"></app-store-item>
-          <app-store-item [characterImage]="'10'" class="col-5"></app-store-item>
-          <app-store-item [characterImage]="'11'" class="col-5"></app-store-item>
-          <app-store-item [characterImage]="'12'" class="col-5"></app-store-item>
-          <app-store-item [characterImage]="'13'" class="col-5"></app-store-item>
+          <app-store-item [characterImage]="item.image_url" [characterTitle]="item.title" class="col-5" *ngFor="let item of category.items.data"></app-store-item>
         </div>
       </div>
     </div>
@@ -84,7 +72,7 @@
       <div class="modal-body">
         <h4 class="text-danger text-center" style="font-size: 4rem">Inventory</h4>
         <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded">
-          <app-inventory-item *ngIf="hasChest" class="col-5 d-flex justify-content-center"></app-inventory-item>
+          <app-inventory-item class="col-5 d-flex justify-content-center"></app-inventory-item>
         </div>
       </div>
     </div>
