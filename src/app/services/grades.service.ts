@@ -23,9 +23,11 @@ export class GradesService {
   }
 `;
 
+  const header = {"X-Api-Key":"JHdLtwpZpL18nR0PspSpHBipEvdP1mbgS6vEV0EHmNDSAYkhVe"};
 
     const body:any = {
-      query: query
+      query: query,
+      headers: header
     }
 
     return this.http.get("https://admin.stuvatar.nl/graphql", body);

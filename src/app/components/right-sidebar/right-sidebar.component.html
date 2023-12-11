@@ -1,10 +1,7 @@
-<div class="d-flex gap-2 p-2 classMates w-100" style="max-width: 100vw;">
-  <div class="rounded-pill d-flex align-items-center p-2 bg-secondary classMate" *ngFor="let p of pupils"
-       style="min-width: 300px;" (click)="openStudent($event)" id="{{p.id}}">
-    <img src="assets/img/{{p.image}}" width="50" height="50" class="object-fit-contain rounded-circle bg-primary">
-    <h4 class="w-75 text-center">{{p.name}}</h4>
-
+<div class="d-flex gap-2 p-2 classMates w-100" style="max-width: 100vw;" *ngIf="classMates">
+  <div class="rounded-pill d-flex align-items-center p-2 bg-secondary classMate" *ngFor="let classMate of classMates"
+       style="min-width: 300px;" (click)="openStudent($event)" id="{{classMate.id}}">
+    <img src="assets/img/" width="50" height="50" class="object-fit-contain rounded-circle bg-primary">
+    <h4 class="w-75 text-center">{{classMate.first_name}} {{classMate.last_name}}</h4>
   </div>
 </div>
-
-

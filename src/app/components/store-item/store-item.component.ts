@@ -7,4 +7,5 @@ import {Component, Input} from '@angular/core';
 })
 export class StoreItemComponent {
   @Input() characterImage: string;
+  @Input() characterTitle: string;
 }

@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Student} from "../../models/student";
 
 @Component({
   selector: 'app-sidebar',
@@ -7,6 +8,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 })
 export class SidebarComponent {
   @Output() lockScreen = new EventEmitter<void>();
+  @Input() Student: Student;
 
   public status: boolean = false;
 
