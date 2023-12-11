@@ -1,12 +1,35 @@
 .classMate{
   transition: .25s;
+  background: linear-gradient(0deg, #523BDC 13.04%, rgba(0, 0, 0, 0.00) 100%), linear-gradient(180deg, #8448C1 8.02%, rgba(124, 41, 207, 0.00) 64.13%);
 }
 
 .classMate:hover{
-  background: #0D6EFD !important;
+  background: linear-gradient(0deg, #523BDC 13.04%, rgba(0, 0, 0, 0.00) 100%), linear-gradient(180deg, #8448C1 8.02%, rgba(124, 41, 207, 0.00) 64.13%) !important;;
   transform: translateY(-5px);
 }
 
 .classMates{
   overflow: auto;
+}
+
+
+.backdrop-img{
+  background-color: #d7f7a4;
+}
+
+
+.classMate:active .animated-img{
+  animation: animated-img 3s forwards;
+}
+
+@keyframes animated-img{
+  70%{
+    transform: rotate(-400deg);
+  }
+  80%{
+    transform: rotate(20deg);
+  }
+  100%{
+    transform: rotate(0deg);
+  }
 }

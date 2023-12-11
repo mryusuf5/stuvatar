@@ -1,3 +1,33 @@
+button{
+  border-radius: 3.125rem;
+  background: linear-gradient(0deg, #523BDC 13.04%, rgba(0, 0, 0, 0.00) 100%), linear-gradient(180deg, #8448C1 8.02%, rgba(124, 41, 207, 0.00) 64.13%);
+}
+
+.background{
+  background-color: black;
+}
+
+.sub-background{
+  background-color: #414149;
+}
+
+.linear-gradient-background{
+  background: linear-gradient(0deg, #523BDC 13.04%, rgba(0, 0, 0, 0.00) 100%), linear-gradient(180deg, #8448C1 8.02%, rgba(124, 41, 207, 0.00) 64.13%);;
+}
+.legendary-border{
+  background:#414149;
+  border: hsl(42, 100%, 54%) 0.2rem solid ;
+  border-radius: 3rem;
+}
+
+.border{
+  background: #414149;
+  width: 20rem;
+  border-radius: 1rem;
+  margin-bottom: 1.0rem;
+  margin-right: 0.2rem;
+}
+
 .bottom-bar{
   position: absolute;
   bottom: 0;

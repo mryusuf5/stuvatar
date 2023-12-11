@@ -10,12 +10,12 @@
     </a>
   </div>
 
-  <button *ngIf="Student" class="btn btn-primary rounded-pill" style="font-size: 4rem" (click)="openMenu()">
+  <button *ngIf="Student" class="button" style="font-size: 4rem" (click)="openMenu()">
     Welcome {{Student.first_name}} {{Student.last_name}}
     <i class="fa-solid fa-chevron-down" *ngIf="!status"></i>
     <i class="fa-solid fa-chevron-up" *ngIf="status"></i>
   </button>
-  <div class="flex-column bg-primary p-2 rounded-4 text-center mt-2" style="gap: 8em" [ngClass]="status ? 'd-flex' : 'd-none'">
+  <div class="flex-column bg-primary p-2 rounded-4 text-center mt-2 container" style="gap: 0.5em" [ngClass]="status ? 'd-flex' : 'd-none'">
     <a href="#" class="text-white p-5" style="font-size: 4rem" data-bs-toggle="modal" data-bs-target="#inventoryModal">
       Inventory
     </a>

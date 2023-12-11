@@ -1,5 +1,5 @@
 <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
-<div class="bg-dark background" style="min-height: 100vh; min-width: 100vw;">
+<div class="background" style="min-height: 100vh; min-width: 100vw;">
   <div class="d-flex flex-column">
     <div class="">
       <app-sidebar [Student]="student" ></app-sidebar>
@@ -30,10 +30,10 @@
         </div>
         <hr>
         <h4 class="text-danger text-center" style="font-size: 4rem">🔥Hottest items🔥</h4>
-        <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded">
-          <app-store-item [characterImage]="'3'" class="col-5"></app-store-item>
-          <app-store-item [characterImage]="'9'" class="col-5"></app-store-item>
-          <app-store-item [characterImage]="'12'" class="col-5"></app-store-item>
+        <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded linear-gradient-background">
+          <app-store-item [characterImage]="'3'" class="col-5 border"></app-store-item>
+          <app-store-item [characterImage]="'9'" class="col-5 border"></app-store-item>
+          <app-store-item [characterImage]="'12'" class="col-5 border"></app-store-item>
         </div>
       </div>
     </div>
@@ -54,8 +54,8 @@
         </button>
         <hr>
         <h4 class="text-danger text-center" style="font-size: 4rem">Avatars</h4>
-        <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded">
-          <app-store-item [characterImage]="item.image_url" [characterTitle]="item.title" class="col-5" *ngFor="let item of category.items.data"></app-store-item>
+        <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded linear-gradient-background">
+          <app-store-item [characterImage]="item.image_url" [characterTitle]="item.title" class="col-5 border" *ngFor="let item of category.items.data"></app-store-item>
         </div>
       </div>
     </div>
