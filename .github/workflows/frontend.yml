@@ -1,0 +1,16 @@
+name: github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on:
+    push:
+      branches:
+        - main
+      paths:
+        - 'dist/stuvatar/**'
+    workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - run: |
+            cd /scripts
+            ./afterpull-Frontend
