@@ -7,7 +7,7 @@ import {QuestionsComponent} from "./pages/questions/questions.component";
 
 const routes: Routes = [
   {path: "", component: LandingComponent},
-  {path: "dashboard", component: DashboardComponent},
+  {path: "dashboard/:id", component: DashboardComponent},
   {path: "idle", component: IdleComponent},
   {path: "questions", component: QuestionsComponent}
 ];

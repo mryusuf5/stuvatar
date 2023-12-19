@@ -1,5 +1,5 @@
 <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
-<div class="background" style="min-height: 100vh; min-width: 100vw;">
+<div class="background stars" style="min-height: 100vh; min-width: 100vw; background-image: url('assets/img/stars.gif')">
   <div class="d-flex flex-column">
     <div class="">
       <app-sidebar [Student]="student" ></app-sidebar>
@@ -72,7 +72,7 @@
       <div class="modal-body">
         <h4 class="text-danger text-center" style="font-size: 4rem">Inventory</h4>
         <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded">
-          <app-inventory-item class="col-5 d-flex justify-content-center"></app-inventory-item>
+          <app-inventory-item class="col-5 d-flex justify-content-center" *ngFor="let item of inventory" [image_url]="item.item.image_url"></app-inventory-item>
         </div>
       </div>
     </div>

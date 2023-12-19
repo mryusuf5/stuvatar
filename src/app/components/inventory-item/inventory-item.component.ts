@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ScreenService} from "../../services/screen.service";
 
 @Component({
@@ -7,6 +7,8 @@ import {ScreenService} from "../../services/screen.service";
   styleUrls: ['./inventory-item.component.scss']
 })
 export class InventoryItemComponent {
+  @Input() image_url: string;
+
   constructor(private screenService: ScreenService) {
 
   }
