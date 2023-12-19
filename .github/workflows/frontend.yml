@@ -1,5 +1,4 @@
-name: github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
+name: frontend
 on:
     push:
       branches:
