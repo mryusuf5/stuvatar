@@ -3,12 +3,12 @@ button{
     background: linear-gradient(0deg, #523BDC 13.04%, rgba(0, 0, 0, 0.00) 100%), linear-gradient(180deg, #8448C1 8.02%, rgba(124, 41, 207, 0.00) 64.13%);
   }
 
-.container{ 
+.sideBarBg{
     background: linear-gradient(
             #414149,
             #414149 10rem,
             #000 10rem,
-            #000 10.5rem, 
+            #000 10.5rem,
             #414149 10.5rem,
             #414149 26rem,
             #000 26rem,
@@ -30,6 +30,5 @@ button{
     overflow: hidden;
     border-radius: 2em;
     margin-top: 1em;
-    margin-left: 10rem;
     width: 80vw;
 }
