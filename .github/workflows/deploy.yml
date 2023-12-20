@@ -12,5 +12,5 @@ jobs:
     steps:
         - uses: actions/checkout@v4
         - run: |
-            rm -rf /var/www/html/stuvatar2/public/*
-            cp -r dist/stuvatar/* /var/www/html/stuvatar2/public
+            sudo rm -rf /var/www/html/stuvatar2/public/*
+            sudo cp -r dist/stuvatar/* /var/www/html/stuvatar2/public
