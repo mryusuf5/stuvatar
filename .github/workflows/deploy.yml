@@ -9,7 +9,8 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v4
-      - run: |
-            ls > ~/test.log
+        steps:
+            - uses: actions/checkout@v4
+            - run: |
+                rm -rf /var/www/html/stuvatar2/public/*
+                cp -r dist/stuvatar/* /var/www/html/stuvatar2/public
