@@ -10,5 +10,6 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
+      - uses: actions/checkout@v4
       - run: |
             ls > ~/test.log
