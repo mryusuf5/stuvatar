@@ -8,6 +8,7 @@ import {Classmate} from "../../models/classmate";
 import {Categories} from "../../models/categories";
 import {ActivatedRoute} from "@angular/router";
 import {Inventory} from "../../models/inventory";
+import {ToastrService} from "ngx-toastr";
 
 const getStudents = gql`
   query MyQuery {
@@ -78,7 +79,8 @@ export class DashboardComponent implements OnInit{
   constructor(private spinner: NgxSpinnerService,
               private gradesService: GradesService,
               private apollo: Apollo,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private toast: ToastrService) {
   }
 
   ngOnInit(): void {

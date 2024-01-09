@@ -3,6 +3,7 @@ import {gql} from "apollo-angular";
 import {Apollo} from "apollo-angular";
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 const buyItem = gql`
   mutation MyMutation($studentId: Int!, $itemId: Int!) {
@@ -28,7 +29,8 @@ export class StoreItemComponent implements OnInit{
   public studentId: number;
 
   public constructor(private apollo: Apollo,
-                     private activatedRoute: ActivatedRoute) {
+                     private activatedRoute: ActivatedRoute,
+                     private toast: ToastrService) {
   }
 
   public buyItem() {
@@ -42,11 +44,19 @@ export class StoreItemComponent implements OnInit{
       })
       .subscribe({
         next: ({ data }) => {
-          alert("Item succesfully bought")
-          window.location.reload();
+          this.toast.success("Item bought", "Succes", {
+            positionClass: "toast-center-center",
+            timeOut: 5000
+          })
+          setTimeout(() => {
+            window.location.reload();
+          }, 5000)
         },
         error: (error) => {
-          alert("Item already owned");
+          this.toast.error(error, "Error", {
+            positionClass: "toast-center-center",
+            timeOut: 5000
+          })
         }
       });
   }
