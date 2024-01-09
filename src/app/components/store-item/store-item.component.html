@@ -4,9 +4,9 @@
     <span class="fs-2">Price:</span>
     <div class="fs-2">
       <img src="assets/img/coin.gif" width="50" alt="">
-      150
+      {{characterPrice}}
     </div>
   </div>
   <h3 class="text-center">{{characterTitle}}</h3>
-  <button class="button">Buy</button>
+  <button class="button" id="{{itemId}}" (click)="buyItem()">Buy</button>
 </div>

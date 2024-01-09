@@ -28,8 +28,11 @@ query MyQuery {
       name
       items {
         data {
-          title
+          id
+          is_available_for_sale
+          price
           image_url
+          title
         }
       }
     }
@@ -123,6 +126,7 @@ export class DashboardComponent implements OnInit{
       })
       .valueChanges.subscribe(({ data, loading }) => {
         this.categories = data.categories.data
+        console.log(this.categories)
       });
 
     this.querySubscription = this.apollo
