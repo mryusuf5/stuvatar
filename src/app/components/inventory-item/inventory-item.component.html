@@ -2,5 +2,5 @@
 <!--  <img src="assets/img/chest.png" class="object-fit-contain rounded" height="300" width="300">-->
 <!--  <button class="btn btn-primary rounded-pill fs-1" data-bs-dismiss="modal" (click)="openChest()">Open</button>-->
   <img src="{{image_url}}" alt="" class="object-fit-contain rounded" height="300" width="300">
-  <button class="btn btn-primary rounded-pill fs-1" data-bs-dismiss="modal">Wear</button>
+  <button class="btn btn-primary rounded-pill fs-1" id="{{item_id}}" (click)="wearItem($event)" data-bs-dismiss="modal">Wear</button>
 </div>

@@ -8,7 +8,6 @@ import {Classmate} from "../../models/classmate";
 import {Categories} from "../../models/categories";
 import {ActivatedRoute} from "@angular/router";
 import {Inventory} from "../../models/inventory";
-import {ToastrService} from "ngx-toastr";
 
 const getStudents = gql`
   query MyQuery {
@@ -56,6 +55,16 @@ query MyQuery($itemId: Int!) {
   item(id: $itemId) {
     image_url
     title
+    id
+  }
+}
+`;
+
+const activeItems = gql`
+query MyQuery($studentId: Int!) {
+  active_item_inventory(student_id: $studentId) {
+    image_url
+    title
   }
 }
 `;
@@ -79,8 +88,7 @@ export class DashboardComponent implements OnInit{
   constructor(private spinner: NgxSpinnerService,
               private gradesService: GradesService,
               private apollo: Apollo,
-              private activatedRoute: ActivatedRoute,
-              private toast: ToastrService) {
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -102,6 +110,29 @@ export class DashboardComponent implements OnInit{
 `;
 
     this.studentId = this.activatedRoute.snapshot.params["id"];
+
+    this.querySubscription = this.apollo
+      .watchQuery<any>({
+        query: activeItems,
+        variables: {
+          studentId: parseInt(String(this.studentId))
+        }
+      })
+      .valueChanges.subscribe({
+        next: ({ data }) => {
+
+        },
+        error: (error) => {
+          if(error)
+          {
+            if(!localStorage.getItem("character"))
+            {
+              localStorage.setItem("character", "default")
+              window.location.reload();
+            }
+          }
+        }
+      });
 
     this.querySubscription = this.apollo
       .watchQuery<any>({
@@ -128,7 +159,6 @@ export class DashboardComponent implements OnInit{
       })
       .valueChanges.subscribe(({ data, loading }) => {
         this.categories = data.categories.data
-        console.log(this.categories)
       });
 
     this.querySubscription = this.apollo
@@ -141,6 +171,7 @@ export class DashboardComponent implements OnInit{
       .valueChanges.subscribe(({ data, loading }) => {
         this.inventory = data;
         this.getInventoryItems(this.inventory);
+        console.log(this.inventory);
       });
   }
 
@@ -157,7 +188,6 @@ export class DashboardComponent implements OnInit{
         })
         .valueChanges.subscribe(({ data, loading }) => {
           this.inventory.push(data);
-          console.log(this.inventory)
         });
     })
   }
