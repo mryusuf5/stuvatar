@@ -13,6 +13,14 @@ const buyItem = gql`
   }
 `;
 
+const buyChest = gql`
+mutation MyMutation($chestId: Int!, $studentId: Int!) {
+  buyChest(chest_id: $chestId, student_id: $studentId) {
+    chest_id
+    used
+  }
+}
+`;
 
 @Component({
   selector: 'app-store-item',

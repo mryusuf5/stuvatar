@@ -75,7 +75,7 @@
       <div class="modal-body">
         <h4 class="text-danger text-center" style="font-size: 4rem">Inventory</h4>
         <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded">
-          <app-inventory-item class="col-5 d-flex justify-content-center" *ngFor="let item of inventory" [image_url]="item.item.image_url"></app-inventory-item>
+          <app-inventory-item class="col-5 d-flex justify-content-center" *ngFor="let item of inventory" [image_url]="item.item.image_url" [item_id]="item.item.id"></app-inventory-item>
         </div>
       </div>
     </div>
