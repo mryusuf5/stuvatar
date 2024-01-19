@@ -2,7 +2,7 @@
   <div class="modal-overlay"></div>
   <img src="assets/img/background-rare.png" class="bg" id="background">
   <div class="container d-flex flex-column gap-2 align-items-center justify-content-center main-container" style="height: 100vh">
-    <img src="assets/img/chest.png" id="chest" width="750" class="object-fit-cover" (click)="openChest()">
+    <img src="https://admin.stuvatar.nl/storage/chests/chest-c2dc26ad-e783-3d36-935b-cb17b5ca3fce.svg" id="chest" width="750" class="object-fit-cover" (click)="openChest($event)">
     <button class="btn btn-primary fs-1" [ngClass]="closeButton ? 'd-none' : 'd-block'" (click)="closeChest()">Close</button>
     <span style="font-size: 8rem">{{rarity}}</span>
   </div>

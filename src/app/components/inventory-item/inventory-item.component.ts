@@ -22,6 +22,8 @@ mutation MyMutation($id: Int!) {
 export class InventoryItemComponent {
   @Input() image_url: string;
   @Input() item_id: number;
+  @Input() is_chest: number;
+  @Input() used: boolean = false;
 
   constructor(private screenService: ScreenService,
               private apollo: Apollo,
@@ -46,24 +48,24 @@ export class InventoryItemComponent {
             timeOut: 5000
           })
           setTimeout(() => {
+            window.localStorage.removeItem("character");
             window.location.reload();
           }, 2000)
-          console.log(data);
         },
         error: (error) => {
           this.toast.error(error, "Error", {
             positionClass: "toast-center-center",
             timeOut: 5000
           })
-          console.log(error)
         }
       });
   }
 
 
 
-  public openChest()
+  public openChest(e)
   {
+    this.screenService.changeChestId(e.target.id);
     this.screenService.toggleClass();
   }
 }
