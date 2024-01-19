@@ -29,11 +29,11 @@
           </button>
         </div>
         <hr>
-        <h4 class="text-danger text-center" style="font-size: 4rem">🔥Hottest items🔥</h4>
+        <h4 class="text-danger text-center" style="font-size: 4rem">🔥Chests🔥</h4>
         <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded linear-gradient-background">
-          <app-store-item [characterImage]="'3'" class="col-5 border"></app-store-item>
-          <app-store-item [characterImage]="'9'" class="col-5 border"></app-store-item>
-          <app-store-item [characterImage]="'12'" class="col-5 border"></app-store-item>
+          <div *ngFor="let chest of chests" [ngClass]="chest.is_available_for_sale ? 'col-5 border' : ''">
+            <app-store-item *ngIf="chest.is_available_for_sale" [isChest]="true" [itemId]="chest.id" [isAvailable]="chest.is_available_for_sale" [characterPrice]="chest.price" [characterImage]="chest.image_url" class="col-5 border"></app-store-item>
+          </div>
         </div>
       </div>
     </div>
@@ -57,7 +57,7 @@
         <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded linear-gradient-background">
           <app-store-item [characterImage]="item.image_url" [characterTitle]="item.title" [characterPrice]="item.price"
                           [isAvailable]="item.is_available_for_sale" class="col-5 border" [itemId]="item.id"
-                          [ngClass]="item.is_available_for_sale ? 'd-flex' : 'd-none'"
+                          [ngClass]="item.is_available_for_sale ? 'd-flex' : 'd-none'" [isChest]=""
                           *ngFor="let item of category.items.data"></app-store-item>
         </div>
       </div>
@@ -75,7 +75,9 @@
       <div class="modal-body">
         <h4 class="text-danger text-center" style="font-size: 4rem">Inventory</h4>
         <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded">
-          <app-inventory-item class="col-5 d-flex justify-content-center" *ngFor="let item of inventory" [image_url]="item.item.image_url" [item_id]="item.item.id"></app-inventory-item>
+          <app-inventory-item class="col-5 d-flex justify-content-center" [is_chest]="false" *ngFor="let item of inventory" [image_url]="item.data.image_url" [item_id]="item.id"></app-inventory-item>
+          <hr>
+          <app-inventory-item class="col-5 d-flex justify-content-center" [is_chest]="true" *ngFor="let chest of chestInventory" [used]="chest.used" [image_url]="chest.chest_image" [item_id]="chest.id"></app-inventory-item>
         </div>
       </div>
     </div>

@@ -33,6 +33,7 @@ export class StoreItemComponent implements OnInit{
   @Input() characterPrice: number;
   @Input() isAvailable: boolean;
   @Input() itemId: number;
+  @Input() isChest: boolean;
   private querySubscription: Subscription;
   public studentId: number;
 
@@ -69,6 +70,33 @@ export class StoreItemComponent implements OnInit{
       });
   }
 
+  public buyChest() {
+    this.querySubscription = this.apollo
+      .mutate({
+        mutation: buyChest,
+        variables: {
+          studentId: +this.studentId,
+          chestId: Number(this.itemId)
+        }
+      })
+      .subscribe({
+        next: ({ data }) => {
+          this.toast.success("Item bought", "Succes", {
+            positionClass: "toast-center-center",
+            timeOut: 5000
+          })
+          setTimeout(() => {
+            window.location.reload();
+          }, 5000)
+        },
+        error: (error) => {
+          this.toast.error(error, "Error", {
+            positionClass: "toast-center-center",
+            timeOut: 5000
+          })
+        }
+      });
+  }
 
 
   ngOnInit(): void {

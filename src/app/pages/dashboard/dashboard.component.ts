@@ -8,6 +8,7 @@ import {Classmate} from "../../models/classmate";
 import {Categories} from "../../models/categories";
 import {ActivatedRoute} from "@angular/router";
 import {Inventory} from "../../models/inventory";
+import {Chest} from "../../models/chest";
 
 const getStudents = gql`
   query MyQuery {
@@ -42,9 +43,10 @@ query MyQuery {
 
 const getInventory = gql`
 query MyQuery($studentId: Int!) {
-  item_inventories(student_id: $studentId) {
+  item_inventories(student_id: $studentId, per_page: 500) {
     data {
       item_id
+      id
     }
   }
 }
@@ -69,6 +71,31 @@ query MyQuery($studentId: Int!) {
 }
 `;
 
+const getChests = gql`
+query MyQuery {
+  chests {
+    data {
+      image_url
+      id
+      price
+      is_available_for_sale
+    }
+  }
+}
+`;
+
+const getChestInventory = gql`
+query MyQuery($studentId: Int!) {
+  chest_inventories(student_id: $studentId) {
+    data {
+      chest_image
+      id
+      used
+    }
+  }
+}
+`;
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -81,7 +108,10 @@ export class DashboardComponent implements OnInit{
   public student: Student;
   public classMates: Classmate[];
   public categories: Categories[];
-  public inventory: Inventory[];
+  public inventory: any[];
+  public image_url: string;
+  public chests: any[];
+  public chestInventory: any[];
   public studentId: number;
   public itemId: number;
 
@@ -120,17 +150,25 @@ export class DashboardComponent implements OnInit{
       })
       .valueChanges.subscribe({
         next: ({ data }) => {
-
+          this.image_url = data.active_item_inventory.image_url
+          window.localStorage.setItem("character", this.image_url);
         },
         error: (error) => {
-          if(error)
-          {
-            if(!localStorage.getItem("character"))
-            {
-              localStorage.setItem("character", "default")
-              window.location.reload();
-            }
-          }
+        }
+      });
+
+    this.querySubscription = this.apollo
+      .watchQuery<any>({
+        query: getChestInventory,
+        variables: {
+          studentId: parseInt(String(this.studentId))
+        }
+      })
+      .valueChanges.subscribe({
+        next: ({ data }) => {
+          this.chestInventory = data.chest_inventories.data;
+        },
+        error: (error) => {
         }
       });
 
@@ -143,6 +181,17 @@ export class DashboardComponent implements OnInit{
       })
       .valueChanges.subscribe(({ data, loading }) => {
         this.student = data.student;
+      });
+
+    this.querySubscription = this.apollo
+      .watchQuery<any>({
+        query: getChests,
+        variables: {
+          studentId: parseInt(String(this.studentId))
+        }
+      })
+      .valueChanges.subscribe(({ data, loading }) => {
+        this.chests = data.chests.data;
       });
 
     this.querySubscription = this.apollo
@@ -171,14 +220,17 @@ export class DashboardComponent implements OnInit{
       .valueChanges.subscribe(({ data, loading }) => {
         this.inventory = data;
         this.getInventoryItems(this.inventory);
-        console.log(this.inventory);
       });
   }
 
-  public getInventoryItems(inventory: any)
-  {
-    this.inventory = [];
-    inventory.item_inventories.data.forEach((e) => {
+  public getInventoryItems(inventory: any) {
+    // Resetting and initializing the inventory array with placeholders
+    this.inventory = new Array(inventory.item_inventories.data.length).fill(null);
+
+    inventory.item_inventories.data.forEach((e, index) => {
+      // Store the id at the correct index
+      this.inventory[index] = { id: e.id };
+
       this.querySubscription = this.apollo
         .watchQuery<any>({
           query: getItem,
@@ -187,8 +239,9 @@ export class DashboardComponent implements OnInit{
           }
         })
         .valueChanges.subscribe(({ data, loading }) => {
-          this.inventory.push(data);
+          // Update the data at the correct index
+          this.inventory[index] = { ...this.inventory[index], data: data.item };
         });
-    })
+    });
   }
 }
