@@ -59,7 +59,7 @@ export class StoreItemComponent implements OnInit{
           })
           setTimeout(() => {
             window.location.reload();
-          }, 5000)
+          }, 2000)
         },
         error: (error) => {
           this.toast.error(error, "Error", {
