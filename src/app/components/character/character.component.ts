@@ -11,7 +11,14 @@ export class CharacterComponent implements OnInit{
   ngOnInit(): void {
     window.localStorage.removeItem("character");
     setTimeout(() => {
-      this.character = window.localStorage.getItem("character") ?? "https://api.dicebear.com/7.x/fun-emoji/svg?size=1024&seed=default-image&radius=50";
+      if(window.localStorage.getItem("character"))
+      {
+        this.character = window.localStorage.getItem("character")
+      }
+      else
+      {
+        this.character ="https://api.dicebear.com/7.x/fun-emoji/svg?size=1024&seed=default-image&radius=50";
+      }
     }, 1000)
   }
 }
