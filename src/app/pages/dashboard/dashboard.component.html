@@ -75,9 +75,9 @@
       <div class="modal-body">
         <h4 class="text-danger text-center" style="font-size: 4rem">Inventory</h4>
         <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded">
-          <app-inventory-item class="col-5 d-flex justify-content-center" [is_chest]="false" *ngFor="let item of inventory" [image_url]="item.data.image_url" [item_id]="item.id"></app-inventory-item>
+          <app-inventory-item class="col-5 d-flex justify-content-center" [is_chest]="false" *ngFor="let item of inventory" [image_url]="item?.data?.image_url" [item_id]="item.id"></app-inventory-item>
           <hr>
-          <app-inventory-item class="col-5 d-flex justify-content-center" [is_chest]="true" *ngFor="let chest of chestInventory" [used]="chest.used" [chest_id]="chest.chest_id" [image_url]="chest.chest_image" [item_id]="chest.id"></app-inventory-item>
+          <app-inventory-item class="col-5 d-flex justify-content-center" [is_chest]="true" *ngFor="let chest of chestInventory" [used]="chest.used" [chest_id]="chest.chest_id" [image_url]="chest?.chest_image" [item_id]="chest.id"></app-inventory-item>
         </div>
       </div>
     </div>
