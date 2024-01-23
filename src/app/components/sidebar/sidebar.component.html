@@ -16,11 +16,11 @@
     <i class="fa-solid fa-chevron-up" *ngIf="status"></i>
   </button>
   <div class="flex-column bg-primary p-2 rounded-4 text-center mt-2 container sideBarBg" style="gap: 0.5em; z-index: 999" [ngClass]="status ? 'd-flex' : 'd-none'">
+    <span href="#" class="text-white p-5 text-decoration-none" style="font-size: 4rem">
+      Klas: {{GradeName}}
+    </span>
     <a href="#" class="text-white p-5" style="font-size: 4rem" data-bs-toggle="modal" data-bs-target="#inventoryModal">
       Inventory
     </a>
-    <a href="idle" class="text-white p-5" style="font-size: 4rem">Lock screen</a>
-    <a href="#" class="text-white p-5" style="font-size: 4rem">Settings</a>
-    <a href="#" class="text-white p-5" style="font-size: 4rem">Logout</a>
   </div>
 </div>

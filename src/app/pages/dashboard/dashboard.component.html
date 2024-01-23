@@ -2,7 +2,7 @@
 <div class="background stars" style="min-height: 100vh; min-width: 100vw; background-image: url('assets/img/stars.gif')">
   <div class="d-flex flex-column">
     <div class="">
-      <app-sidebar [Student]="student" ></app-sidebar>
+      <app-sidebar [Student]="student" [GradeName]="gradeName"></app-sidebar>
     </div>
     <div class="col-8 d-flex align-items-center justify-content-center w-100 p-5" style="height: 1600px">
       <app-character></app-character>
@@ -77,7 +77,7 @@
         <div class="row justify-content-center align-items-center g-0 bg-secondary p-2 rounded">
           <app-inventory-item class="col-5 d-flex justify-content-center" [is_chest]="false" *ngFor="let item of inventory" [image_url]="item.data.image_url" [item_id]="item.id"></app-inventory-item>
           <hr>
-          <app-inventory-item class="col-5 d-flex justify-content-center" [is_chest]="true" *ngFor="let chest of chestInventory" [used]="chest.used" [image_url]="chest.chest_image" [item_id]="chest.id"></app-inventory-item>
+          <app-inventory-item class="col-5 d-flex justify-content-center" [is_chest]="true" *ngFor="let chest of chestInventory" [used]="chest.used" [chest_id]="chest.chest_id" [image_url]="chest.chest_image" [item_id]="chest.id"></app-inventory-item>
         </div>
       </div>
     </div>

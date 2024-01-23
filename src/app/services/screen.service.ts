@@ -10,6 +10,8 @@ export class ScreenService {
   addClass$ = this.addClassSubject.asObservable();
   private chestIdSource = new BehaviorSubject<number>(0);
   currentChestId = this.chestIdSource.asObservable();
+  private mainChestIdSource = new BehaviorSubject<number>(0);
+  currentMainChestId = this.mainChestIdSource.asObservable();
 
   constructor() { }
 
@@ -19,5 +21,10 @@ export class ScreenService {
 
   changeChestId(id: number) {
     this.chestIdSource.next(id);
+  }
+
+  changeMainChestId(id: number)
+  {
+    this.mainChestIdSource.next(id);
   }
 }

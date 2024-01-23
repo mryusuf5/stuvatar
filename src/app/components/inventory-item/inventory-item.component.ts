@@ -24,6 +24,7 @@ export class InventoryItemComponent {
   @Input() item_id: number;
   @Input() is_chest: number;
   @Input() used: boolean = false;
+  @Input() chest_id: number;
 
   constructor(private screenService: ScreenService,
               private apollo: Apollo,
@@ -66,6 +67,7 @@ export class InventoryItemComponent {
   public openChest(e)
   {
     this.screenService.changeChestId(e.target.id);
+    this.screenService.changeMainChestId(this.chest_id);
     this.screenService.toggleClass();
   }
 }
