@@ -27,7 +27,7 @@ query MyQuery {
   categories {
     data {
       name
-      items {
+      items(per_page: 1000) {
         data {
           id
           is_available_for_sale
@@ -86,11 +86,12 @@ query MyQuery {
 
 const getChestInventory = gql`
 query MyQuery($studentId: Int!) {
-  chest_inventories(student_id: $studentId) {
+  chest_inventories(student_id: $studentId, per_page: 1000) {
     data {
       chest_image
       id
       used
+      chest_id
     }
   }
 }
@@ -114,6 +115,7 @@ export class DashboardComponent implements OnInit{
   public chestInventory: any[];
   public studentId: number;
   public itemId: number;
+  public gradeName: string;
 
   constructor(private spinner: NgxSpinnerService,
               private gradesService: GradesService,
@@ -139,6 +141,15 @@ export class DashboardComponent implements OnInit{
   }
 `;
 
+    const getGrade = gql`
+    query MyQuery($gradeId: Int!) {
+  grade(id: $gradeId) {
+    grade_number
+    title
+  }
+}
+    `;
+
     this.studentId = this.activatedRoute.snapshot.params["id"];
 
     this.querySubscription = this.apollo
@@ -157,6 +168,7 @@ export class DashboardComponent implements OnInit{
         }
       });
 
+
     this.querySubscription = this.apollo
       .watchQuery<any>({
         query: getChestInventory,
@@ -167,6 +179,7 @@ export class DashboardComponent implements OnInit{
       .valueChanges.subscribe({
         next: ({ data }) => {
           this.chestInventory = data.chest_inventories.data;
+          console.log(this.chestInventory);
         },
         error: (error) => {
         }
@@ -181,6 +194,21 @@ export class DashboardComponent implements OnInit{
       })
       .valueChanges.subscribe(({ data, loading }) => {
         this.student = data.student;
+        this.querySubscription = this.apollo
+          .watchQuery<any>({
+            query: getGrade,
+            variables: {
+              gradeId: Number(this.student.grade_id)
+            }
+          })
+          .valueChanges.subscribe({
+            next: ({ data }) => {
+              this.gradeName = data.grade.title;
+            },
+            error: (error) => {
+              console.log(error)
+            }
+          });
       });
 
     this.querySubscription = this.apollo

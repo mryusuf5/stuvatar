@@ -9,6 +9,7 @@ import {Student} from "../../models/student";
 export class SidebarComponent {
   @Output() lockScreen = new EventEmitter<void>();
   @Input() Student: Student;
+  @Input() GradeName: string;
 
   public status: boolean = false;
 
